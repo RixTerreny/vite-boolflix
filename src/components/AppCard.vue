@@ -16,7 +16,7 @@ export default{
             <div><img :src="element.backdrop_path" alt=""></div>
             <div>{{"Titolo: "+element.title}}</div>
             <div>{{"Titolo originale: "+element.original_title}}</div>
-            <div>{{"Lingua: italiano"}}</div>
+            <div>{{"Lingua originale: "+element.original_language}}</div>
             <div>{{"Voto: "+element.release_date}}</div>
             <div>{{"Voto: "+element.vote_average+"/10"}}</div>
         </div>
