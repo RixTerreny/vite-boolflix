@@ -1,3 +1,11 @@
+
+<template>
+<div class="container my-2">
+    <AppCard/>
+</div>
+</template>
+
+
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {store} from "../store";
@@ -12,11 +20,6 @@ export default{
 }
 </script>
 
-<template>
-<div class="container">
-    <AppCard/>
-</div>
-</template>
 
 <style lang="scss">
 @use '../styles/general.scss' as *;

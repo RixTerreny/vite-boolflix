@@ -39,7 +39,6 @@ export default{
     })
     .then( resp=> {
         store.movies= resp.data;
-        console.log(store.movies);
     }); 
     }
   },
