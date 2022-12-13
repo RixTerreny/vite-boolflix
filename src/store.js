@@ -17,5 +17,19 @@ export function suggestedMovies(){
     })
     .then( resp=> {
         store.movies= resp.data;
-    }); 
+    });
+}
+
+export function suggestedSeries(){
+    axios.get("https://api.themoviedb.org/3/search/tv?",{
+        params:{
+            api_key:"f82482f505269ddba5a36550ac066000",
+            query:"adventure",
+            language:"it-IT",
+        }
+    })
+    .then( resp=> {
+        store.series= resp.data;
+        console.log(store.series);
+    });
 }

@@ -1,7 +1,7 @@
 
 <template>
-  <div>
-    <AppHeader @search="fetchMovies()"/>
+  <div class="bg-netflix text-white">
+    <AppHeader class="AppHeader" @search="fetchMovies(),fetchSeries()"/>
     <AppMain/>
   </div>
 </template>
@@ -11,13 +11,24 @@
 img{
   width: 100%;
 }
+
+.AppHeader{
+  position: sticky;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.719);
+}
+
+.bg-netflix{
+  background-color: rgb(19, 19, 19);
+  padding-bottom: 2rem;
+}
 </style>
 
 
 <script >
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {suggestedMovies, store} from "./store"
+import {suggestedMovies,suggestedSeries, store} from "./store"
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 export default{
@@ -34,16 +45,28 @@ export default{
             api_key:"f82482f505269ddba5a36550ac066000",
             query:store.searchText,
             language:"it-IT",
-            append_to_response:"images"
         }
     })
     .then( resp=> {
         store.movies= resp.data;
     }); 
+    },
+    fetchSeries(){
+      axios.get("https://api.themoviedb.org/3/search/tv?",{
+        params:{
+            api_key:"f82482f505269ddba5a36550ac066000",
+            query:store.searchText,
+            language:"it-IT",
+        }
+    })
+    .then( resp=> {
+        store.series= resp.data;
+    }); 
     }
   },
   created(){
-    suggestedMovies()
+    suggestedMovies(),
+    suggestedSeries()
   }
 }
 </script>

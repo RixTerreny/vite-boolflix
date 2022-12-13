@@ -1,15 +1,15 @@
 
 <template>
     <div class="row justify-content-between">
-        <div class="mx-3 my-2 col-2 flex-grow-1" v-for="element in store.movies.results">
+        <div class="mx-3 my-2 col-2 flex-grow-1" v-for="element in store.series.results">
                     <div>
                         <img v-if="element.backdrop_path!=null" :src="'https://image.tmdb.org/t/p/w342'+ element.backdrop_path" alt="">
                         <img v-else src="image-not-found.png" alt="">
                     </div>
-                    <div>{{"Titolo: "+element.title}}</div>
-                    <div>{{"Titolo originale: "+element.original_title}}</div>
+                    <div>{{"Titolo: "+element.name}}</div>
+                    <div>{{"Titolo originale: "+element.original_name}}</div>
                     <div>{{"Lingua originale: "+element.original_language}}</div>
-                    <div>{{"Data uscita: "+element.release_date}}</div>
+                    <div>{{"Data uscita: "+element.first_air_date}}</div>
                     <div class="d-flex">
                         <div class="me-1" v-for="i in 5">
                             <i class="fa-solid fa-star yellow" v-if="valoreVoto>=0.9"></i>
@@ -45,7 +45,6 @@ export default{
         },
         stelle(value){
             let vote = value*5/10;
-
             return vote;
         }
     }

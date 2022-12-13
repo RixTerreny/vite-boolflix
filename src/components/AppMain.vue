@@ -1,7 +1,10 @@
 
 <template>
 <div class="container my-2">
-    <AppCard/>
+    <h2>Movie</h2>
+    <AppCardMovie/>
+    <h2 class="mt-3">Series</h2>
+    <AppCardSerie/>
 </div>
 </template>
 
@@ -9,9 +12,10 @@
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {store} from "../store";
-import AppCard from '../components/AppCard.vue';
+import AppCardMovie from './AppCardMovie.vue';
+import AppCardSerie from './AppCardSerie.vue';
 export default{
-    components:{AppCard},
+    components:{AppCardMovie,AppCardSerie},
     data(){
         return{
             store
