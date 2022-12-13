@@ -13,7 +13,6 @@ export function suggestedMovies(){
             api_key:"f82482f505269ddba5a36550ac066000",
             query:"adventure",
             language:"it-IT",
-            append_to_response:"images"
         }
     })
     .then( resp=> {
