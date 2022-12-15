@@ -1,8 +1,8 @@
 
 <template>
-<div class="container my-2">
+<div class="container my-2 ">
     <h2>Movie</h2>
-    <AppCardMovie/>
+    <AppCardMovie :array-film="arrayFilm"/>
     <h2 class="mt-3">Series</h2>
     <AppCardSerie/>
 </div>
@@ -18,7 +18,8 @@ export default{
     components:{AppCardMovie,AppCardSerie},
     data(){
         return{
-            store
+            store,
+            arrayFilm: store.movies,
         }
     }
 }
@@ -27,5 +28,6 @@ export default{
 
 <style lang="scss">
 @use '../styles/general.scss' as *;
+
 
 </style>

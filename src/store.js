@@ -11,7 +11,7 @@ export function suggestedMovies(){
     axios.get("https://api.themoviedb.org/3/search/movie?",{
         params:{
             api_key:"f82482f505269ddba5a36550ac066000",
-            query:"adventure",
+            query:"battaglia",
             language:"it-IT",
         }
     })

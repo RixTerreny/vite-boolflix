@@ -33,6 +33,11 @@
 button i{
   margin-left: -10px;
 }
+
+nav{
+  z-index: 9999;
+  background-color: black;
+}
 </style>
 
 

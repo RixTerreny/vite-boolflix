@@ -3,7 +3,7 @@
     <div class="row justify-content-between">
         <div class="mx-3 my-2 col-2 flex-grow-1" v-for="element in store.series.results">
                     <div>
-                        <img v-if="element.backdrop_path!=null" :src="'https://image.tmdb.org/t/p/w342'+ element.backdrop_path" alt="">
+                        <img v-if="element.poster_path!=null" :src="'https://image.tmdb.org/t/p/w342'+ element.poster_path" alt="">
                         <img v-else src="image-not-found.png" alt="">
                     </div>
                     <div>{{"Titolo: "+element.name}}</div>

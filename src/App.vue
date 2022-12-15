@@ -12,6 +12,10 @@ img{
   width: 100%;
 }
 
+.z-in{
+    z-index: -2;
+}
+
 .AppHeader{
   position: sticky;
   top: 0;
