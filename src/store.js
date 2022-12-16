@@ -30,6 +30,5 @@ export function suggestedSeries(){
     })
     .then( resp=> {
         store.series= resp.data;
-        console.log(store.series);
     });
 }

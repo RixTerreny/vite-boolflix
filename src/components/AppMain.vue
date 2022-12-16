@@ -2,9 +2,17 @@
 <template>
 <div class="container my-2 ">
     <h2>Movie</h2>
-    <AppCardMovie :array-film="arrayFilm"/>
+    <div class="row justify-content-between">
+        <div class="mx-3 my-2 col-2 flex-grow-1" v-for="element in store.movies.results">
+            <AppCardMovie :element="element"></AppCardMovie>
+        </div>
+    </div>
     <h2 class="mt-3">Series</h2>
-    <AppCardSerie/>
+    <div class="row justify-content-between">
+        <div class="mx-3 my-2 col-2 flex-grow-1" v-for="element in store.series.results">
+            <AppCardSerie :element="element"></AppCardSerie>
+        </div>
+    </div>
 </div>
 </template>
 
@@ -19,7 +27,6 @@ export default{
     data(){
         return{
             store,
-            arrayFilm: store.movies,
         }
     }
 }
@@ -28,6 +35,5 @@ export default{
 
 <style lang="scss">
 @use '../styles/general.scss' as *;
-
 
 </style>

@@ -1,30 +1,40 @@
 
 <template>
-    <div class="row justify-content-between">
-        <div class="mx-3 my-2 col-2 flex-grow-1" v-for="element in store.series.results">
-                    <div>
-                        <img v-if="element.poster_path!=null" :src="'https://image.tmdb.org/t/p/w342'+ element.poster_path" alt="">
-                        <img v-else src="image-not-found.png" alt="">
-                    </div>
-                    <div>{{"Titolo: "+element.name}}</div>
-                    <div>{{"Titolo originale: "+element.original_name}}</div>
-                    <div>{{"Lingua originale: "+element.original_language}}</div>
-                    <div>{{"Data uscita: "+element.first_air_date}}</div>
-                    <div class="d-flex">
-                        <div class="me-1" v-for="i in 5">
-                            <i class="fa-solid fa-star yellow" v-if="valoreVoto>=0.9"></i>
-                            <i class="fa-solid fa-star-half-stroke yellow" v-else-if="valoreVoto>=0.4"></i>
-                            <i class="fa-solid fa-star " v-else></i>
-                        </div>
-                    </div>
+    <div class="position-relative box ">
+        <div class="resize-img">
+            <img class="img-h" v-if="element.poster_path!=null" :src="'https://image.tmdb.org/t/p/w342'+ element.poster_path" alt="">
+            <img v-else :src="'https://picsum.photos/200/3'+ randomNumber()" alt="" class=" img-h">
+        </div>
+        <div class="position-absolute top-0 p-2 info overflow-auto">
+            <div>{{"Titolo: "+element.name}}</div>
+            <div>{{"Titolo originale: "+element.original_name}}</div>
+            <div class="d-flex">
+                {{"Lingua originale: "}}
+                <div class="resize ms-2">
+                    <img :src="'https://flagcdn.com/16x12/jp.png'" alt="">
+                </div>
+            </div>
+            <div>{{"Data uscita: "+element.first_air_date}}</div>
+            <div class="d-flex">
+                <i v-for="stella in stelle" class="  fa-star me-1 yellow" 
+                :class="{ 'fa-solid': stella == true, 'fa-regular':stella == false, 'fa-solid fa-star-half-stroke yellow' : stella == 'mezzaStella'}"></i>
+            </div>
+            <div >{{"Titolo originale: "+element.overview}}</div>
         </div>
     </div>
+    
+
 </template>
 
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {store} from "../store"
 export default{
+    props:{
+        element:{
+            type:Object
+        }
+    },
     data(){
         return{
             store,
@@ -32,6 +42,10 @@ export default{
         }
     },
     methods:{
+        randomNumber(){
+            const toReturn = Math.floor(Math.random() * 100);
+            return toReturn
+        },
         generateUrl(){
             let urlImg
             if(element.backdrop_path!=null){
@@ -43,9 +57,23 @@ export default{
                 return urlImg
             }
         },
-        stelle(value){
-            let vote = value*5/10;
-            return vote;
+    },
+    computed:{
+        stelle(){
+            const toReturn=[];
+            const voto = this.element.vote_average/2;
+            const stellePiene = Math.floor(voto);
+
+            for(let i =0; i<5; i++){
+                let toPush = i<stellePiene;
+                const decimal = voto %1;
+                
+                if (stellePiene == i && decimal) {
+                    toPush="mezzaStella";
+                }
+                toReturn.push(toPush)
+            }
+            return toReturn
         }
     }
 }
@@ -54,8 +82,31 @@ export default{
 
 <style lang="scss">
 @use '../styles/general.scss' as *;
+
 .yellow{
     color: goldenrod;
 }
+.img-h{
+    width: 100%;
+    height: 100%;
+}
 
+.resize-img{
+    height: 320px;
+}
+
+.info{
+    background-color: rgba(0, 0, 0, 0.496);
+    height: 100%;
+    width: 100%;
+    display: none;
+}
+
+.box:hover .info{
+    display: block;
+}
+
+.box ::-webkit-scrollbar {
+  width: 0px;
+}
 </style>
