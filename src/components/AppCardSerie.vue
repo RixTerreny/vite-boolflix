@@ -19,7 +19,7 @@
                 <i v-for="stella in stelle" class="  fa-star me-1 yellow" 
                 :class="{ 'fa-solid': stella == true, 'fa-regular':stella == false, 'fa-solid fa-star-half-stroke yellow' : stella == 'mezzaStella'}"></i>
             </div>
-            <div >{{"Titolo originale: "+element.overview}}</div>
+            <div v-if="element.overview!=''" >{{"info: "+element.overview}}</div>
         </div>
     </div>
     

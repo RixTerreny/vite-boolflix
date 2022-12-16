@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <div class="on-top">
     <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
         <div class="d-flex align-items-center" role="search">
@@ -25,6 +25,12 @@
   width: 13rem;
 }
 
+.on-top{
+  position: sticky;
+  top: 0;
+  z-index: 22;
+}
+
 .btn-color{
   color: grey;
   border: 0;
@@ -35,7 +41,7 @@ button i{
 }
 
 nav{
-  z-index: 9999;
+  z-index: 99 !important;
   background-color: black;
 }
 </style>

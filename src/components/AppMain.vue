@@ -1,6 +1,6 @@
 
 <template>
-<div class="container my-2 ">
+<div class="container my-2 z-in">
     <h2>Movie</h2>
     <div class="row justify-content-between">
         <div class="mx-3 my-2 col-2 flex-grow-1" v-for="element in store.movies.results">

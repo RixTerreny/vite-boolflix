@@ -13,12 +13,11 @@ img{
 }
 
 .z-in{
-    z-index: -2;
+    z-index: -2 !important;
 }
 
 .AppHeader{
-  position: sticky;
-  top: 0;
+
   background-color: rgba(0, 0, 0, 0.719);
 }
 
